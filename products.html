@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Market - Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card {
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-category {
+            margin-top: 50px;
+        }
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .cart-icon .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 7px;
+            font-size: 14px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Farmers Market</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#fruits">Fruits</a>
+                        <a class="dropdown-item" href="#vegetables">Vegetables</a>
+                        <a class="dropdown-item" href="#grains">Grains</a>
+                        <a class="dropdown-item" href="#nuts">Nuts</a>
+                        <a class="dropdown-item" href="#dairy">Dairy Products</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmer2.html">Farmers Near Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about2.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Categories -->
+    <div class="container product-category" id="fruits">
+        <h2 class="text-center">Fruits</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="images/papple.png" class="card-img-top" alt="Apple">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple</h5>
+                        <p class="card-text">$3.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Apple', 3.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="images/pbanana.png" class="card-img-top" alt="Banana">
+                    <div class="card-body">
+                        <h5 class="card-title">Banana</h5>
+                        <p class="card-text">$1.50 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Banana', 1.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="images/pguava.png" class="card-img-top" alt="Guava">
+                    <div class="card-body">
+                        <h5 class="card-title">Guava</h5>
+                        <p class="card-text">$1.75 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Guava', 1.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="images/ppapaya.png" class="card-img-top" alt="papaya">
+                    <div class="card-body">
+                        <h5 class="card-title">papaya</h5>
+                        <p class="card-text">$2.50 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('papaya', 1.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more fruits as needed -->
+        </div>
+    </div>
+
+    <div class="container product-category" id="vegetables">
+        <h2 class="text-center">Vegetables</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Carrot">
+                    <div class="card-body">
+                        <h5 class="card-title">Carrot</h5>
+                        <p class="card-text">$2.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Carrot', 2.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Tomato">
+                    <div class="card-body">
+                        <h5 class="card-title">Tomato</h5>
+                        <p class="card-text">$2.50 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Tomato', 2.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more vegetables as needed -->
+        </div>
+    </div>
+
+    <div class="container product-category" id="grains">
+        <h2 class="text-center">Grains</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Rice">
+                    <div class="card-body">
+                        <h5 class="card-title">Rice</h5>
+                        <p class="card-text">$1.20 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Rice', 1.20)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Wheat">
+                    <div class="card-body">
+                        <h5 class="card-title">Wheat</h5>
+                        <p class="card-text">$1.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Wheat', 1.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more grains as needed -->
+        </div>
+    </div>
+
+    <div class="container product-category" id="nuts">
+        <h2 class="text-center">Nuts</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Almonds">
+                    <div class="card-body">
+                        <h5 class="card-title">Almonds</h5>
+                        <p class="card-text">$10.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Almonds', 10.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Cashews">
+                    <div class="card-body">
+                        <h5 class="card-title">Cashews</h5>
+                        <p class="card-text">$12.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Cashews', 12.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more nuts as needed -->
+        </div>
+    </div>
+
+    <div class="container product-category" id="dairy">
+        <h2 class="text-center">Dairy Products</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Milk">
+                    <div class="card-body">
+                        <h5 class="card-title">Milk</h5>
+                        <p class="card-text">$1.50 per liter</p>
+                        <button class="btn btn-primary" onclick="addToCart('Milk', 1.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Cheese">
+                    <div class="card-body">
+                        <h5 class="card-title">Cheese</h5>
+                        <p class="card-text">$8.00 per kg</p>
+                        <button class="btn btn-primary" onclick="addToCart('Cheese', 8.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more dairy products as needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Farmers Market. All rights reserved.</p>
+        <div class="cart-icon" onclick="toggleCartModal()">
+            <i class="fas fa-shopping-cart"><img style="color: aliceblue; height:30px; width:30px ;border-radius:30px" src="images/cart.png" alt=""></i>
+            <span class="cart-count">0</span>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-items" class="list-group">
+                        <!-- Cart items will be dynamically inserted here -->
+                    </ul>
+                    <p id="cart-total" class="text-right font-weight-bold mt-3">Total: $0.00</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        let cart = [];
+
+// Function to add a product to the cart
+function addToCart(productName, productPrice) {
+    const existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        const product = {
+            name: productName,
+            price: productPrice,
+            quantity: 1
+        };
+        cart.push(product);
+    }
+
+    // Update the cart count in the icon
+    updateCartCount();
+
+    // Save the cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Function to remove a product from the cart
+function removeFromCart(productName) {
+    cart = cart.filter(item => item.name !== productName);
+
+    // Update the cart count in the icon
+    updateCartCount();
+
+    // Save the updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Update the cart UI in the modal
+    updateCartUI();
+}
+
+// Function to update the cart count in the icon
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.innerText = totalItems;
+}
+
+// Function to load the cart from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const storedCart = JSON.parse(localStorage.getItem('cart'));
+    if (storedCart) {
+        cart = storedCart;
+        updateCartCount();
+    }
+});
+
+// Function to toggle the cart modal
+function toggleCartModal() {
+    $('#cartModal').modal('toggle');
+    updateCartUI();
+}
+
+// Function to update the cart UI in the modal
+function updateCartUI() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    cartItemsContainer.innerHTML = '';
+
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('li');
+        itemElement.className = 'list-group-item d-flex justify-content-between align-items-center';
+        itemElement.innerHTML = `
+            <span>${item.name} - $${item.price} x ${item.quantity}</span>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.name}')">Remove</button>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+
+        totalPrice += item.price * item.quantity;
+    });
+
+    cartTotal.innerHTML = `Total: $${totalPrice.toFixed(2)}`;
+}
+
+    </script>
+</body>
+</html>

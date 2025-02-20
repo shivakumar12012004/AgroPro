@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Farmers Market</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .hero-section {
+            background: url('https://via.placeholder.com/1500x600') center center/cover no-repeat;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section h1 {
+            z-index: 2;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            z-index: 2;
+            font-size: 1.5rem;
+        }
+
+        .our-story, .our-mission, .team-section {
+            padding: 60px 0;
+        }
+
+        .mission-icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .parallax-section {
+            background: url('images/asupport.png') center center/cover no-repeat;
+            height: 400px;
+            position: relative;
+            color: #000000;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .parallax-section h2 {
+            position: absolute;
+            top: 60%;
+            left: 60%;
+            transform: translate(-60%, -60%);
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- navbar   -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Farmers Market</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmer2.html">Farmers Near Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about2.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center justify-content-center text-center" style="max-height: 40vh;">
+        <div class="container">
+            <h1>About Farmers Market</h1>
+            <p>Your trusted partner in connecting local farmers with communities.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="images/aourstory.png" alt="Our Story" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2>Our Story</h2>
+                    <p>Farmers Market was founded with a simple mission: to connect local farmers with the communities that need them most. We believe in the power of fresh, locally-sourced produce and are committed to supporting sustainable farming practices.</p>
+                    <p>Over the years, we've grown into a vibrant online marketplace, making it easier than ever for customers to find and purchase the best products from farmers in their area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="our-mission text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-leaf mission-icon"></i>
+                    <h3>Sustainability</h3>
+                    <p>We promote sustainable farming practices that protect the environment and ensure long-term agricultural health.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-handshake mission-icon"></i>
+                    <h3>Community</h3>
+                    <p>Connecting local farmers with customers to create thriving, resilient communities.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-shopping-basket mission-icon"></i>
+                    <h3>Quality</h3>
+                    <p>Delivering the highest quality produce directly from farms to your doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+     
+    <section class="parallax-section">
+        <h2>Supporting Farmers, Nourishing Communities</h2>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center">Meet Our Team</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6 text-center team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member" class="img-fluid rounded-circle mb-3">
+                    <h5>John Doe</h5>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member" class="img-fluid rounded-circle mb-3">
+                    <h5>Jane Smith</h5>
+                    <p>Head of Operations</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member" class="img-fluid rounded-circle mb-3">
+                    <h5>Sam Johnson</h5>
+                    <p>Marketing Director</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center team-member">
+                    <img src="https://via.placeholder.com/150" alt="Team Member" class="img-fluid rounded-circle mb-3">
+                    <h5>Emily Brown</h5>
+                    <p>Customer Relations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 Farmers Market. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

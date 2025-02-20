@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Farmers Market</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+   <style>
+    /* Add any additional styles for the Contact Us page here */
+
+/* Example styles */
+#contact-us {
+    padding: 60px 0;
+}
+
+#contact-us h2 {
+    margin-bottom: 40px;
+}
+
+#contact-us .form-group {
+    margin-bottom: 20px;
+}
+
+#contact-us .btn {
+    margin-top: 20px;
+}
+   </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Farmers Market</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmer2.html">Farmers Near Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about2.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="container my-5">
+        <h2 class="text-center">Contact Us</h2>
+        <form id="contact-form" class="mt-4">
+            <div class="form-group">
+                <label for="contactName">Name</label>
+                <input type="text" class="form-control" id="contactName" required>
+            </div>
+            <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input type="email" class="form-control" id="contactEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Farmers Market. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Bootstrap and jQuery scripts
+document.write(`
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"><\/script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"><\/script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><\/script>
+`);
+
+// Handle contact form submission
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const contactName = document.getElementById('contactName').value.trim();
+    const contactEmail = document.getElementById('contactEmail').value.trim();
+    const contactMessage = document.getElementById('contactMessage').value.trim();
+
+    if (contactName && contactEmail && contactMessage) {
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    } else {
+        alert('Please fill in all fields.');
+    }
+});
+    </script>
+</body>
+</html>

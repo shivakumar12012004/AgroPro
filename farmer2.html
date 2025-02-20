@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Near Me</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Farmers Market</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="farmer2.html">Farmers Near Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about2.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Farmers Near Me Section -->
+    <section id="farmers-near-me" class="container my-5">
+        <h2 class="text-center">Register as a Farmer</h2>
+        <form id="farmer-form" class="mt-4">
+            <div class="form-group">
+                <label for="farmerName">Farmer Name</label>
+                <input type="text" class="form-control" id="farmerName" required>
+            </div>
+            <div class="form-group">
+                <label for="farmerLocation">Location</label>
+                <input type="text" class="form-control" id="farmerLocation" required>
+            </div>
+            <div class="form-group">
+                <label for="farmerProducts">Products (comma-separated)</label>
+                <input type="text" class="form-control" id="farmerProducts" required>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Minimum Price</label>
+                <input type="number" class="form-control" id="productPrice" required>
+            </div>
+            <button type="submit" class="btn btn-success">Register</button>
+        </form>
+
+        <h2 class="text-center my-5">Registered Farmers</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Farmer Name</th>
+                        <th>Date & Time Registered</th>
+                        <th>Location</th>
+                        <th>Products Available</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="farmerTable">
+                    <!-- Farmer data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Farmers Market. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Load farmers from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadFarmers();
+});
+
+// Handle farmer registration form submission
+document.getElementById('farmer-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const farmerName = document.getElementById('farmerName').value.trim();
+    const farmerLocation = document.getElementById('farmerLocation').value.trim();
+    const farmerProducts = document.getElementById('farmerProducts').value.trim();
+    const productPrice = document.getElementById('productPrice').value.trim();
+    const dateTimeRegistered = new Date().toLocaleString();
+
+    if (checkFarmerExists(farmerName, farmerLocation)) {
+        alert('A farmer with this name already exists at this location. Please choose a different name or location.');
+        return;
+    }
+
+    const farmerData = {
+        name: farmerName,
+        dateTime: dateTimeRegistered,
+        location: farmerLocation,
+        products: farmerProducts,
+        price: productPrice
+    };
+
+    saveFarmer(farmerData);
+    loadFarmers();
+    this.reset();
+});
+
+// Check if farmer already exists
+function checkFarmerExists(name, location) {
+    const farmers = JSON.parse(localStorage.getItem('farmers')) || [];
+    return farmers.some(farmer => farmer.name === name && farmer.location === location);
+}
+
+// Save farmer to localStorage
+function saveFarmer(farmerData) {
+    const farmers = JSON.parse(localStorage.getItem('farmers')) || [];
+    farmers.push(farmerData);
+    localStorage.setItem('farmers', JSON.stringify(farmers));
+}
+
+// Load farmers from localStorage and display in the table
+function loadFarmers() {
+    const farmers = JSON.parse(localStorage.getItem('farmers')) || [];
+    const farmerTable = document.getElementById('farmerTable');
+    farmerTable.innerHTML = '';
+
+    farmers.forEach((farmer, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${farmer.name}</td>
+            <td>${farmer.dateTime}</td>
+            <td>${farmer.location}</td>
+            <td class="products">${farmer.products} (Minimum Price: $${farmer.price})</td>
+            <td><button class="btn btn-primary btn-sm edit-btn" onclick="editProducts(${index})">Edit Products</button></td>
+            <td><button class="btn btn-danger btn-sm remove-btn" onclick="removeFarmer(${index})">Remove</button></td>
+        `;
+        farmerTable.appendChild(row);
+    });
+}
+
+// Edit products and price for a specific farmer
+function editProducts(index) {
+    const farmers = JSON.parse(localStorage.getItem('farmers')) || [];
+    const farmer = farmers[index];
+
+    const newProducts = prompt('Edit products (comma-separated):', farmer.products);
+    const newPrice = prompt('Edit minimum price:', farmer.price);
+
+    if (newProducts !== null && newPrice !== null) {
+        farmer.products = newProducts.trim();
+        farmer.price = newPrice.trim();
+        farmers[index] = farmer;
+        localStorage.setItem('farmers', JSON.stringify(farmers));
+        loadFarmers();
+    }
+}
+
+// Remove a specific farmer from the table and localStorage
+function removeFarmer(index) {
+    const farmers = JSON.parse(localStorage.getItem('farmers')) || [];
+    if (confirm(`Are you sure you want to remove ${farmers[index].name}?`)) {
+        farmers.splice(index, 1); // Remove the farmer from the array
+        localStorage.setItem('farmers', JSON.stringify(farmers)); // Update localStorage
+        loadFarmers(); // Reload the table
+    }
+}
+
+    </script>
+</body>
+</html>
